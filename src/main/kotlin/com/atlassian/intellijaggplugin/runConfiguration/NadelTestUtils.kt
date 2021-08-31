@@ -10,7 +10,6 @@ fun PsiElement.isInFixtureFile(): Boolean {
                 directory.parentDirectory?.name?.contains(NadelTestConstants.FIXTURES_DIR_NAME) ?: false)
 
     return this.isInYamlFile() && isInFixtureDir
-
 }
 
 fun PsiElement.isInYamlFile(): Boolean {
