@@ -1,4 +1,4 @@
-package com.github.felipegdr.intellijaggplugin.runConfiguration
+package com.atlassian.intellijaggplugin.runConfiguration
 
 import com.intellij.execution.configurations.ConfigurationFactory
 import com.intellij.execution.configurations.ConfigurationType
@@ -7,7 +7,7 @@ import javax.swing.Icon
 
 class NadelTestRunConfigurationType : ConfigurationType {
     override fun getDisplayName(): String {
-        return "Nadel test"
+        return "Nadel Test"
     }
 
     override fun getConfigurationTypeDescription(): String {

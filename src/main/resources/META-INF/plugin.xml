@@ -1,20 +1,21 @@
 <idea-plugin>
-    <id>com.github.felipegdr.intellijaggplugin</id>
-    <name>intellij-agg-plugin</name>
-    <vendor>felipe-gdr</vendor>
+    <id>com.atlassian.intellijaggplugin</id>
+    <name>Nadel Tests</name>
+    <vendor>Atlassian</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.java</depends>
+    <depends>org.jetbrains.plugins.gradle</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.felipegdr.intellijaggplugin.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.felipegdr.intellijaggplugin.services.MyProjectService"/>
-        <configurationType implementation="com.github.felipegdr.intellijaggplugin.runConfiguration.NadelTestRunConfigurationType"/>
+        <configurationType
+                implementation="com.atlassian.intellijaggplugin.runConfiguration.NadelTestRunConfigurationType"/>
+
+        <!-- Run in context -->
+        <runConfigurationProducer
+                implementation="com.atlassian.intellijaggplugin.runConfiguration.NadelTestRunConfigurationProducer"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.felipegdr.intellijaggplugin.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
