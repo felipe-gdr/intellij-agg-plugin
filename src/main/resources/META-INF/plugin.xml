@@ -10,6 +10,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <applicationService serviceImplementation="com.github.felipegdr.intellijaggplugin.services.MyApplicationService"/>
         <projectService serviceImplementation="com.github.felipegdr.intellijaggplugin.services.MyProjectService"/>
+        <configurationType implementation="com.github.felipegdr.intellijaggplugin.runConfiguration.NadelTestRunConfigurationType"/>
     </extensions>
 
     <applicationListeners>
