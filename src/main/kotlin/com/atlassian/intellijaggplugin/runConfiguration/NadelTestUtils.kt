@@ -5,9 +5,10 @@ import com.intellij.psi.PsiElement
 fun PsiElement.isInFixtureFile(): Boolean {
     val directory = this.containingFile.containingDirectory
 
-    val isInFixtureDir =
-        (directory.name.contains(NadelTestConstants.FIXTURES_DIR_NAME) ||
-                directory.parentDirectory?.name?.contains(NadelTestConstants.FIXTURES_DIR_NAME) ?: false)
+    val isInFixtureDir = (
+        directory.name.contains(NadelTestConstants.FIXTURES_DIR_NAME) ||
+            directory.parentDirectory?.name?.contains(NadelTestConstants.FIXTURES_DIR_NAME) ?: false
+        )
 
     return this.isInYamlFile() && isInFixtureDir
 }
