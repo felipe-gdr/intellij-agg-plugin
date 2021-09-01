@@ -1,5 +1,5 @@
 <idea-plugin>
-    <id>com.atlassian.intellijaggplugin</id>
+    <id>com.atlassian.intellij.plugin.nadel</id>
     <name>Nadel Tests</name>
     <vendor>Atlassian</vendor>
 
@@ -11,11 +11,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <configurationType
-                implementation="com.atlassian.intellijaggplugin.runConfiguration.NadelTestRunConfigurationType"/>
+                implementation="com.atlassian.intellij.plugin.nadel.runConfiguration.NadelTestRunConfigurationType"/>
 
         <!-- Run in context -->
         <runConfigurationProducer
-                implementation="com.atlassian.intellijaggplugin.runConfiguration.NadelTestRunConfigurationProducer"/>
+                implementation="com.atlassian.intellij.plugin.nadel.runConfiguration.NadelTestRunConfigurationProducer"/>
     </extensions>
 
 </idea-plugin>

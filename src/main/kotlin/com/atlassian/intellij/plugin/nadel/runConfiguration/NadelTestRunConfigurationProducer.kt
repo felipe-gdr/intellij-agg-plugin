@@ -1,4 +1,4 @@
-package com.atlassian.intellijaggplugin.runConfiguration
+package com.atlassian.intellij.plugin.nadel.runConfiguration
 
 import com.intellij.execution.actions.ConfigurationContext
 import com.intellij.execution.actions.LazyRunConfigurationProducer
@@ -18,7 +18,7 @@ class NadelTestRunConfigurationProducer : LazyRunConfigurationProducer<GradleRun
     ): Boolean {
         val element = sourceElement.get()
 
-        if (element.isInFixtureFile()) {
+        if (element.project.isNadelProject() && element.isInFixtureFile()) {
             val fileName = element.containingFile.name
 
             configuration.name = fileName
@@ -34,7 +34,8 @@ class NadelTestRunConfigurationProducer : LazyRunConfigurationProducer<GradleRun
         context: ConfigurationContext
     ): Boolean {
         val element = context.psiLocation
+        val isNadelProject = element?.project?.isNadelProject() ?: false
 
-        return configuration.name == element?.containingFile?.name
+        return isNadelProject && configuration.name == element?.containingFile?.name
     }
 }

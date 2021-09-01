@@ -1,4 +1,4 @@
-package com.atlassian.intellijaggplugin.runConfiguration
+package com.atlassian.intellij.plugin.nadel.runConfiguration
 
 import com.intellij.execution.configurations.ConfigurationFactory
 import com.intellij.execution.configurations.ConfigurationType
