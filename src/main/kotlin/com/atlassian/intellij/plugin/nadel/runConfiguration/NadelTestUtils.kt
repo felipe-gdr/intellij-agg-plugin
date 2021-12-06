@@ -1,17 +1,28 @@
 package com.atlassian.intellij.plugin.nadel.runConfiguration
 
 import com.intellij.openapi.project.Project
+import com.intellij.psi.PsiDirectory
 import com.intellij.psi.PsiElement
 
 fun PsiElement.isInFixtureFile(): Boolean {
     val directory = this.containingFile?.containingDirectory ?: return false
 
-    val isInFixtureDir = (
-        directory.name.contains(NadelTestConstants.FIXTURES_DIR_NAME) ||
-            directory.parentDirectory?.name?.contains(NadelTestConstants.FIXTURES_DIR_NAME) ?: false
-        )
+    val isInFixtureDir = isInFixtureDirectoryHierarchy(directory)
 
     return this.isInYamlFile() && isInFixtureDir
+}
+
+@Suppress("ReturnCount")
+private fun isInFixtureDirectoryHierarchy(directory: PsiDirectory?): Boolean {
+    if (directory == null) {
+        return false
+    }
+
+    if (directory.name.contains(NadelTestConstants.FIXTURES_DIR_NAME)) {
+        return true
+    }
+
+    return isInFixtureDirectoryHierarchy(directory.parentDirectory)
 }
 
 fun PsiElement.isInYamlFile(): Boolean {
